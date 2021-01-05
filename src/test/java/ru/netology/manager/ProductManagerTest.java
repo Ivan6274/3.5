@@ -52,14 +52,17 @@ class ProductManagerTest {
         productManager.add(samsungT10);
         productManager.add(apple);
 
-        Product[] actual = productManager.matches();
-        Product[] expected = new Product[]{firstBook, secondBook};
+        Product[] actual = productManager.searchBy("samsung");
+        Product[] expected = new Product[]{samsungB2, samsungA1,samsungT10};
 
         assertArrayEquals(actual,expected);
 
+        Product[] actual1 = productManager.searchBy("i'm");
+        Product[] expected2 = new Product[]{firstBook, secondBook};
+
+        assertArrayEquals(actual1,expected2);
+
     }
 
-    @Test
-    void matches() {
-    }
+
 }
