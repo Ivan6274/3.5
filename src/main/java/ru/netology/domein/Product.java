@@ -34,4 +34,10 @@ public class Product {
         this.name = name;
         this.coast = coast;
     }
+    public boolean matches(String search) {
+        if (matches(search)) {
+            return true;
+        }
+        return false;
+    }
 }

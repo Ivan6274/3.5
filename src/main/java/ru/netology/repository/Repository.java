@@ -15,20 +15,35 @@ public class Repository {
 
     }
 
+
     public Product[] findAll() {
         return items;
     }
 
-    public void removeById(int id) {
-        int length = items.length - 1;
-        Product[] tmp = new Product[length];
-        int index = 0;
+    public Product findById(int id) {
+
         for (Product item : items) {
-            if (item.getId() != id) {
-                tmp[index] = item;
-                index++;
+            if (item.getId() == id) {
+                return item;
             }
         }
-        items = tmp;
+        return null;
+    }
+
+    public void removeById(int id) throws NotFoundExeption {
+        if (findById(id) == null) {
+            throw new NotFoundExeption("Could find Id product = " + id + " to remove.");
+        } else {
+            int length = items.length - 1;
+            Product[] tmp = new Product[length];
+            int index = 0;
+            for (Product item : items) {
+                if (item.getId() != id) {
+                    tmp[index] = item;
+                    index++;
+                }
+            }
+            items = tmp;
+        }
     }
 }
