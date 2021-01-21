@@ -63,12 +63,12 @@ class RepositoryTest {
         repository.save(firstBook);
         repository.save(secondBook);
         repository.save(samsung);
-        try {
-            repository.removeById(8);
-        }
-        catch (NotFoundExeption e){
-            System.err.println(e);
-        }
-
+//        try {
+//            repository.removeById(8);
+//        }
+//        catch (NotFoundExeption e){
+//            System.err.println(e);
+//        }
+        assertThrows(NotFoundExeption.class, ()-> repository.removeById(1111));
     }
 }
